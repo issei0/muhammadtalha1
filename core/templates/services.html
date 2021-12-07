@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="container">
+        <section>
+            <!-- services -->
+            <div class="d-flex flex-column mt-5">
+                <h1>{{ servic.name }}</h1>
+                <h4>{{ servic.text1 }}</h4>
+                <p>{{ servic.desc }}</p>
+            </div>
+            
+            <!-- card -->
+            <div class="d-flex flex-row flex-wrap justify">
+                {% for service in services %}
+                    <div class="card m-2 box infinite-item">
+                        <h4 class="card-header">{{ service.name }}</h4>
+                        <div class="card-body">
+                            <p class="card-text">{{ service.desc }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            
+            <div>
+                {% if services.has_next %}
+                <a class="infinite-more-link" href="?page={{ services.next_page_number }}">
+                    <div class="text-center">
+                        <button class="btn loading" type="button" disabled style="cursor: default; background-color: rgb(61, 74, 87); color: Gainsboro;">
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            Loading...
+                        </button>
+                    </div>
+                </a>
+                {% endif %}
+            </div>
+        </section>
+    </div>
+
+    <script src="/static/jquery.waypoints.min.js"></script>
+    <script src="/static/infinite.min.js"></script>
+    <script>
+        var infinite = new Waypoint.Infinite({
+            element: $(".justify")[0],
+            offset: "bottom-in-view",
+            onBeforePageLoad: function () {
+                $(".loading").show();
+            },
+            onAfterPageLoad: function () {
+                $(".loading").hide();
+            },
+        });
+    </script>
+{% endblock %}

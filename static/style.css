@@ -1,0 +1,179 @@
+@charset "utf-8";
+
+/* CSS Document */
+* {
+  box-sizing: border-box;
+}
+body{
+	background-color:rgb(253, 178, 80);
+	margin:0px;
+	padding:0px;
+}
+nav img{
+	cursor: pointer;
+}
+.navbar{
+	background-color:rgb(61, 74, 87);
+	padding: .5rem 6rem;
+	width: 100%;
+	box-shadow:0px 5px 12px rgba(0,0,0,0.2);
+}
+.collapse{
+	justify-content: flex-end;
+}
+a{
+	color: Gainsboro;
+	text-align: center;
+}
+a:hover{
+	color: rgb(253, 178, 80);
+}
+.main div img{
+	width: 100%;
+}
+.main-inline{
+	width: 55%;
+}
+.main-inline p{
+	font-size: xx-large;
+}
+.main-inline h1{
+	font-size: 55px;
+}
+.blackish{
+	background-color: rgb(61, 74, 87);
+	color: Gainsboro;
+	transition: 0.5s ease;
+}
+.blackish:hover{
+	background-color: whitesmoke;
+	color: rgb(61, 74, 87);
+}
+.gainsboro{
+	background-color: Gainsboro;
+	color: rgb(61, 74, 87);
+	transition: 0.5s ease;
+}.gainsboro:hover{
+	background-color: rgb(253, 178, 80);
+	color: rgb(61, 74, 87);
+}
+.card{
+	background-color: rgb(61, 74, 87);
+}
+.about{
+	margin: auto;
+	border-radius: 10px;
+	max-width: 65%;
+	padding: 5%;
+}
+h1,
+h4,
+p{
+	color: rgb(37, 46, 55);
+}
+.card h5,
+.card h4,
+.card p{
+	color: whitesmoke;
+}
+.about button{
+	margin: 1% 0;
+}
+.container{
+	margin: 5% auto;
+}
+.box{
+	max-width: 300px;
+}
+.justify{
+	justify-content: space-around;
+}
+form{
+	background-color: rgb(61, 74, 87);
+	padding: 5%;
+	border-radius: 10px;
+	color: #E8E8E8;
+}
+.form-control{
+	background-color: whitesmoke;
+	color: #202020;
+}
+p{
+	text-align: justify;
+	text-justify: inter-word;
+}
+h1{
+	font-family: 'Lily Script One', cursive;
+}
+h4,
+h5{
+	font-family: 'Elsie', cursive;
+}
+p,
+button{
+	font-family: 'Philosopher', sans-serif;
+}
+@media(max-width:1035px){
+	.main-inline{
+		width: 60%;
+	}
+	.flex-img{
+		width: 40%;
+	}
+	.main-inline h1{
+		font-size: 45px;
+	}
+	.main-inline p{
+		font-size: x-large;
+	}
+	.main-inline div button{
+		font-size: large;
+		margin: 1%;
+	}
+}
+@media(max-width:991px){
+	.navbar{
+		padding: .5rem 1rem;
+	}
+	form{
+		padding: 8% 7.5%;
+	}
+}
+@media(max-width:750px){
+	.box{
+		max-width: 450px;
+	}
+	.justify{
+		justify-content: center;
+	}
+}
+@media(max-width:750px){
+	.main-inline{
+		width: 100%;
+	}
+	.flex-img{
+		display: none;
+	}
+	.about{
+		max-width: 80%;
+	}
+	.about-body{
+		padding: 1%;
+	}
+}
+@media(max-width:450px){
+	.box{
+		max-width: 250px;
+	}
+}
+@media(max-width:418px){ 
+	.main-inline h1{
+		font-size: xx-large;
+	}
+	.main-inline p{
+		font-size: large;
+	}
+	.main-inline div button{
+		font-size: medium;
+	}
+}

@@ -1,0 +1,9 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="container" style="height: 260px;">
+        <h3>Dear {{ sender }}</h3>
+        <p style="word-wrap: break-word;">Thanks for reaching out! I'm thrilled to hear from you and hopefully I will be able to provide you my services with high level satisfaction.</p>
+        <p>Cheers!</p>
+        <button class="btn blackish" onclick="window.location.href='{{ main.link }}'">Return Home</button>
+    </div>
+{% endblock %}

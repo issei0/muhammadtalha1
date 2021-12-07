@@ -1,0 +1,143 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <header>
+        <div class="d-flex main" style="padding: 5% 10%;">
+            <!--text-->
+            <div class="d-inline-flex flex-column justify-content-center main-inline">
+                <p>{{ main.text1 }},</p>
+                <h1>{{ main.text2 }}</h1>
+                <p>{{ main.text3 }}<br>{{ main.text4 }}</p>
+                <div>
+                    <button type ="button" class="btn blackish" onclick="window.location.href='{{ main.link1 }}'">{{ main.button1 }}</button>
+                    <button type ="button" class="btn blackish">{{ main.button2 }}</button>
+                </div>
+            </div>
+            <!--model-->
+            <div class="flex-img">
+                <img alt="model" src="{{ main.image1.url }}">
+            </div>
+        </div>
+    </header>
+    <section>
+        <div id="about" class="card shadow about">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="{{ about.image.url }}" class="card-img" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body about-body">
+                        <h4 class="card-title">Card title</h4>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. In id, similique laborum illum hic nemo</p>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum iusto est expedita inventore.</p>
+                        <button type ="button" class="btn gainsboro" onclick="window.location.href='{{ about.link1 }}'">{{ about.button1 }}</button>
+                        <button type ="button" class="btn gainsboro">{{ about.button2 }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        {% ifequal servic.name|stringformat:"s" "Services" %}
+        <section id="services">
+            <!-- services -->
+            <div class="d-flex flex-column mt-5">
+                <h1>{{ servic.name }}</h1>
+                <h4>{{ servic.text1 }}</h4>
+                <p>{{ servic.desc }}</p>
+            </div>
+            
+            <!-- card -->
+            <div class="d-flex flex-row flex-wrap justify">
+                {% for service in services %}
+                    {%if forloop.counter < 10 %}
+                        <div class="card m-2 box">
+                            <h4 class="card-header">{{ service.name }}</h4>
+                            <div class="card-body">
+                                <p class="card-text">{{ service.desc }}</p>
+                            </div>
+                        </div>
+                    {%endif%}
+                {% endfor %}
+                <button type="button" class="btn btn-lg btn-block blackish" onclick="window.location.href='{{ servic.link1 }}'">{{ servic.button1 }}</button>
+            </div>
+        </section>
+        {% endifequal %}
+
+    
+        {% ifequal experience.name|stringformat:"s" "Experience" %}
+        <!--Experience-container-->
+        <section id="experience">
+            <div class="d-flex flex-column mt-5">
+                <h1>{{ experience.name }}</h1>
+                <h4>{{ experience.text1 }}</h4>
+                <p>{{ experience.desc }}</p>
+            </div>
+            <!-- card -->
+            <div class="d-flex flex-row flex-wrap justify">
+                {% for experience in experiences reversed %}
+                    {%if forloop.counter < 10 %}
+                        <div class="card m-2 box">
+                            <img class="card-img-top" src="{{ experience.image_url }}" alt="">
+                            <div class="card-body">
+                                <h4 class="card-title">{{ experience.name }}</h4>
+                                <p class="card-text">{{ experience.desc }}</p>
+                            </div>
+                        </div>
+                    {%endif%}
+                {% endfor %}
+                <button type="button" class="btn btn-lg btn-block blackish" onclick="window.location.href='{{ experience.link1 }}'">{{ experience.button1 }}</button>
+            </div>
+        </section>
+        {% endifequal %}
+        
+        {% ifequal project.name|stringformat:"s" "Projects" %}
+        <!--project-->       
+        <section id="projects">
+            <div class="d-flex flex-column mt-5">
+                <h1>{{ project.name }}</h1>
+                <h4>{{ project.text1 }}</h4>
+                <p>{{ project.desc }}</p>
+            </div>
+
+            <!-- card -->
+            <div class="d-flex flex-row flex-wrap justify">
+                {% for project in projects %}
+                    {%if forloop.counter < 10 %}
+                        <div class="card m-2 box">
+                            <img class="card-img-top" src="{{ project.image_url }}" alt="">
+                            <div class="card-body">
+                                <h4 class="card-title">{{ project.name }}</h4>
+                                <p class="card-text">{{ project.desc }}</p>
+                            </div>
+                        </div>
+                    {%endif%}
+                {% endfor %}
+                <button type="button" class="btn btn-lg btn-block blackish" onclick="window.location.href='{{ project.link1 }}'">{{ project.button1 }}</button>
+            </div>
+        </section>
+        {% endifequal %}
+        
+        <article id="contact">
+            <h1 class="mt-5">Contact</h1>
+            <h4>Contact me directly if you have any questions</h4>
+            <p>Please write your name, email address and a message below if you have any questions. I shall be happy to contact you directly and answer your questions as soon as possible.</p>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-6">
+                        {{ form.first_name|as_crispy_field }}
+                    </div>
+                    <div class="col-6">
+                        {{ form.last_name|as_crispy_field }}
+                    </div>
+                </div>
+                {{form.email_address|as_crispy_field}}
+                {{form.subject|as_crispy_field}}
+                {{form.message|as_crispy_field}}
+                <input class="btn btn-success" type="submit" value="Send">
+            </form>
+        </article>
+    </div>
+{% endblock %}

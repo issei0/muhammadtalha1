@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="container">
+        {% ifequal experience.name|stringformat:"s" "Experience" %}
+        <section id="experience">
+            <div class="d-flex flex-column mt-5">
+                <h1>{{ experience.name }}</h1>
+                <h4>{{ experience.text1 }}</h4>
+                <p>{{ experience.desc }}</p>
+            </div>
+
+            <!-- card -->
+            <div class="d-flex flex-row flex-wrap justify">
+                {% for experience in experiences reversed %}
+                        <div class="card m-2 box infinite-item">
+                            <img class="card-img-top" src="{{ experience.image_url }}" alt="">
+                            <div class="card-body">
+                                <h4 class="card-title">{{ experience.name }}</h4>
+                                <p class="card-text">{{ experience.desc }}</p>
+                            </div>
+                        </div>
+                {% endfor %}
+            </div>
+            {% endifequal %}
+
+            
+            <div>
+                {% if experiences.has_next %}
+                <a class="infinite-more-link" href="?page={{ experiences.next_page_number }}">         
+                    <div class="text-center">
+                        <button class="btn loading" type="button" disabled style="cursor: default; background-color: rgb(61, 74, 87); color: Gainsboro;">
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            Loading...
+                        </button>
+                    </div>
+                </a>
+                {% endif %}
+            </div>
+        </section>
+    </div>
+
+    <script src="/static/jquery.waypoints.min.js"></script>
+    <script src="/static/infinite.min.js"></script>
+    <script>
+        var infinite = new Waypoint.Infinite({
+            element: $(".justify")[0],
+            offset: "bottom-in-view",
+            onBeforePageLoad: function () {
+                $(".loading").show();
+            },
+            onAfterPageLoad: function () {
+                $(".loading").hide();
+            },
+        });
+    </script>
+{% endblock %}

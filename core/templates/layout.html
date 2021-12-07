@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ main.name }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Elsie&family=Lily+Script+One&family=Philosopher&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+    <script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-touch-icon.png'%}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png'%}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png'%}">
+    <link rel="manifest" href="{% static 'site.webmanifest'%}">
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <!--navigation-->
+    <nav class="navbar navbar-expand-lg">
+        <a href="{{ main.link }}">
+            <img class="navbar-brand" src="{{ main.homeimage.url }}" onclick="window.location.href=''" alt="">
+        </a>
+        <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                {% for link in links %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ link.link }}">{{ link.name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </nav>
+    {% block content %}
+    {% endblock %}
+    <!-- footer -->
+    <footer>
+        <div class="card text-center" style="border-radius: 0;">
+            <div class="card-body">
+                <h5 class="card-title">{{ footer.name }}</h5>
+                <p style="text-align: center;" class="card-text">{{ footer.paragraph }}</p>
+                <div style="font-size: x-large;" class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <!--copyright-->
+            <div class="card-footer text-muted">
+                <p style="text-align: center;" class="copyright">&copy; by {{ footer.copyright }}</p>
+            </div>
+        </div>
+    </footer>
+    <!--JQUery-->
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'JQuery.js'%}"></script>
+    <script type="text/javascript" src="{% static 'script.js'%}"></script>
+</body>
+</html>
