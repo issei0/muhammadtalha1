@@ -98,6 +98,13 @@ form{
 	background-color: whitesmoke;
 	color: #202020;
 }
+.textarea,
+.textinput,
+.emailinput{
+	width: 100%;
+	border-radius: 5px;
+	border: none;
+}
 p{
 	text-align: justify;
 	text-justify: inter-word;
